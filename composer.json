@@ -1,0 +1,42 @@
+{
+    "name": "nguyenanhung/web-builder-helper",
+    "type": "library",
+    "description": "Web Builder Helper by Hung Nguyen",
+    "keywords": [
+        "php",
+        "website",
+        "news"
+    ],
+    "homepage": "https://github.com/nguyenanhung/web-builder-helper",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "Nguyen An Hung",
+            "email": "dev@nguyenanhung.com",
+            "homepage": "https://nguyenanhung.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "ext-pdo": "*",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "hashids/hashids": "^4.1",
+        "cocur/slugify": "^4.0",
+        "ext-mbstring": "*",
+        "nesbot/carbon": "^2.53"
+    },
+    "require-dev": {
+        "nguyenanhung/image": "^3.0",
+        "nguyenanhung/helpers": "^3.0"
+    },
+    "suggest": {
+        "nguyenanhung/image": "For Image Cache",
+        "nguyenanhung/helpers": "For Awesome helpers"
+    },
+    "autoload": {
+        "psr-4": {
+            "nguyenanhung\\WebBuilderHelper\\": "src/"
+        }
+    }
+}
