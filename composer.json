@@ -24,7 +24,8 @@
         "hashids/hashids": "^4.1",
         "cocur/slugify": "^4.0",
         "ext-mbstring": "*",
-        "nesbot/carbon": "^2.53"
+        "nesbot/carbon": "^2.53",
+        "erusev/parsedown-extra": "^0.8.1"
     },
     "require-dev": {
         "nguyenanhung/image": "^3.0",
