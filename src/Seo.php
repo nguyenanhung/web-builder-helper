@@ -455,6 +455,9 @@ class Seo implements ProjectInterface
             $hashIds = $this->sdkConfig[self::HASH_IDS_CONFIG_KEY];
             $hash    = new Hashids($hashIds['salt'], $hashIds['minHashLength'], $hashIds['alphabet']);
             $decode  = $hash->decode($string);
+            if (empty($decode)) {
+                return null;
+            }
             if (count($decode) > 1) {
                 return $decode;
             }
