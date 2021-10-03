@@ -18,14 +18,16 @@
         }
     ],
     "require": {
+        "php": ">=7.0",
         "ext-pdo": "*",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "hashids/hashids": "^4.1",
-        "cocur/slugify": "^4.0",
-        "nesbot/carbon": "^2.53",
-        "nguyenanhung/markdown": "^1.0"
+        "nguyenanhung/hashids-helper": "^2.0",
+        "nguyenanhung/slug-helper": "^2.0",
+        "nguyenanhung/markdown": "^2.0",
+        "nguyenanhung/date-helper": "^2.0",
+        "nesbot/carbon": "^2.53"
     },
     "require-dev": {
         "nguyenanhung/image": "^3.0",
@@ -38,6 +40,9 @@
     "autoload": {
         "psr-4": {
             "nguyenanhung\\WebBuilderHelper\\": "src/"
-        }
+        },
+        "files": [
+            "helpers/helpers.php"
+        ]
     }
 }
