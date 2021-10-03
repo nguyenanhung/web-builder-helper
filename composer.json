@@ -30,6 +30,7 @@
         "nesbot/carbon": "^2.53"
     },
     "require-dev": {
+        "nguyenanhung/seo": "^3.0",
         "nguyenanhung/image": "^3.0",
         "nguyenanhung/helpers": "^3.0"
     },

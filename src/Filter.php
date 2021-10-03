@@ -27,12 +27,12 @@ class Filter implements ProjectInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 11/26/18 09:45
      *
-     * @param array $inputData
-     * @param array $requireData
+     * @param mixed $inputData
+     * @param mixed $requireData
      *
      * @return bool
      */
-    public static function filterInputDataIsArray($inputData = [], $requireData = [])
+    public static function filterInputDataIsArray($inputData = [], $requireData = []): bool
     {
         if (empty($inputData) || empty($requireData)) {
             return false;
@@ -60,7 +60,7 @@ class Filter implements ProjectInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 49:46
      */
-    public static function exceptionMissingInputParams()
+    public static function exceptionMissingInputParams(): string
     {
         $url      = 'https://go.tramtro.com/esdmv96z';
         $errorMsg = 'Invalid or Missing Require Params Page Meta';
