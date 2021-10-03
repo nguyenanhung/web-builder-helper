@@ -26,7 +26,6 @@
         "nguyenanhung/hashids-helper": "^2.0",
         "nguyenanhung/slug-helper": "^2.0",
         "nguyenanhung/markdown": "^2.0",
-        "nguyenanhung/date-helper": "^2.0",
         "nesbot/carbon": "^2.53"
     },
     "require-dev": {
