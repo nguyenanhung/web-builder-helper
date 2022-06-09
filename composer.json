@@ -23,15 +23,15 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "nguyenanhung/hashids-helper": "^2.0",
-        "nguyenanhung/slug-helper": "^2.0",
-        "nguyenanhung/markdown": "^2.0",
+        "nguyenanhung/hashids-helper": "^2.0 || ^1.0",
+        "nguyenanhung/slug-helper": "^2.0 || ^1.0",
+        "nguyenanhung/markdown": "^2.0 || ^1.0",
         "nesbot/carbon": "^2 || ^1"
     },
     "require-dev": {
-        "nguyenanhung/seo": "^3.0",
-        "nguyenanhung/image": "^3.0",
-        "nguyenanhung/helpers": "^3.0"
+        "nguyenanhung/seo": "^3.0 || ^2.0 || ^1.0",
+        "nguyenanhung/image": "^3.0 || ^2.0 || ^1.0",
+        "nguyenanhung/helpers": "^3.0 || ^2.0 || ^1.0"
     },
     "suggest": {
         "nguyenanhung/image": "For Image Cache",
@@ -42,7 +42,8 @@
             "nguyenanhung\\WebBuilderHelper\\": "src/"
         },
         "files": [
-            "helpers/helpers.php"
+            "helpers/helpers.php",
+            "helpers/schema.php"
         ]
     }
 }
