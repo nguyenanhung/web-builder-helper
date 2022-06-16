@@ -11,10 +11,9 @@
 namespace nguyenanhung\WebBuilderHelper;
 
 use Carbon\Carbon;
-use Cocur\Slugify\Slugify;
-use Exception;
 use stdClass;
 use DateTime;
+use nguyenanhung\Libraries\Slug\SlugUrl;
 
 /**
  * Class Utils
@@ -40,16 +39,16 @@ class Utils implements ProjectInterface
      * For very fine grained control over headers, you could use the Output
      * Library's set_header() function.
      *
-     * @param string $uri       URL
-     * @param string $method    Redirect method
+     * @param string   $uri     URL
+     * @param string   $method  Redirect method
      *                          'auto', 'location' or 'refresh'
-     * @param int    $code      HTTP Response status code
+     * @param int|null $code    HTTP Response status code
      *
      * @return    void
      *
      * @copyright https://www.codeigniter.com/
      */
-    public static function redirect($uri = '', $method = 'auto', $code = null)
+    public static function redirect(string $uri = '', string $method = 'auto', int $code = null)
     {
         // IIS environment likely? Use 'refresh' for better compatibility
         if ($method === 'auto' &&
@@ -83,11 +82,11 @@ class Utils implements ProjectInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 11/26/18 10:50
      *
-     * @param $string
+     * @param string $string
      *
      * @return bool
      */
-    public static function isJson($string = '')
+    public static function isJson(string $string = ''): bool
     {
         json_decode($string);
 
@@ -101,11 +100,11 @@ class Utils implements ProjectInterface
      * @time  : 11/9/18 17:01
      *
      * @param array $data
-     * @param bool  $str_to_lower
+     * @param bool  $toLower
      *
      * @return array|bool|\stdClass
      */
-    public static function arrayToObject($data = [], $str_to_lower = false)
+    public static function arrayToObject(array $data = [], bool $toLower = false)
     {
         if (!is_array($data)) {
             return $data;
@@ -114,11 +113,11 @@ class Utils implements ProjectInterface
         if (count($data) > 0) {
             foreach ($data as $name => $value) {
                 $name = trim($name);
-                if ($str_to_lower === true) {
+                if ($toLower === true) {
                     $name = strtolower($name);
                 }
                 if (!empty($name)) {
-                    $object->$name = self::arrayToObject($value, $str_to_lower);
+                    $object->$name = self::arrayToObject($value, $toLower);
                 }
             }
 
@@ -134,7 +133,7 @@ class Utils implements ProjectInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 2018-12-09 19:44
      *
-     * @param string $object
+     * @param mixed $object
      *
      * @return false|mixed|string
      */
@@ -154,7 +153,7 @@ class Utils implements ProjectInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 11/26/18 10:51
      *
-     * @param string $data
+     * @param mixed $data
      *
      * @return array|bool|mixed|\stdClass|string
      */
@@ -184,7 +183,7 @@ class Utils implements ProjectInterface
      * @return string
      * @throws \Exception
      */
-    public static function expireTime($duration = 1)
+    public static function expireTime(int $duration = 1): string
     {
         $expire = $duration <= 1 ? new DateTime("+0 days") : new DateTime("+$duration days");
 
@@ -201,7 +200,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateHashValue($str = '')
+    public static function generateHashValue(string $str = ''): string
     {
         return hash(self::HASH_ALGORITHM, $str);
     }
@@ -214,7 +213,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateUserPasswordRandom()
+    public static function generateUserPasswordRandom(): string
     {
         return random_string(self::USER_PASSWORD_RANDOM_ALGORITHM, self::USER_PASSWORD_RANDOM_LENGTH);
     }
@@ -227,7 +226,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateUserToken()
+    public static function generateUserToken(): string
     {
         return random_string(self::USER_TOKEN_ALGORITHM);
     }
@@ -240,7 +239,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateUserSaltKey()
+    public static function generateUserSaltKey(): string
     {
         return random_string(self::USER_SALT_ALGORITHM);
     }
@@ -253,11 +252,9 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateRequestId()
+    public static function generateRequestId(): string
     {
-        $time = new Carbon();
-
-        return $time->format('YmdHis') . random_string('numeric', 10);
+        return (new Carbon())->format('YmdHis') . random_string('numeric', 10);
     }
 
     /**
@@ -270,7 +267,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateOTPCode($length = 6)
+    public static function generateOTPCode(int $length = 6): string
     {
         return random_string('numeric', $length);
     }
@@ -278,19 +275,17 @@ class Utils implements ProjectInterface
     /**
      * Function generateOTPExpireTime
      *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2018-12-07 11:26
-     *
      * @param int $hour
      *
      * @return string
      * @throws \Exception
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 17/06/2022 24:46
      */
-    public static function generateOTPExpireTime($hour = 4)
+    public static function generateOTPExpireTime(int $hour = 4): string
     {
-        $time = new DateTime('+' . $hour . ' days');
-
-        return $time->format('Y-m-d H:i:s');
+        return (new DateTime('+' . $hour . ' days'))->format('Y-m-d H:i:s');
     }
 
     /**
@@ -301,11 +296,9 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function zuluTime()
+    public static function zuluTime(): string
     {
-        $time = new Carbon();
-
-        return $time->toIso8601ZuluString();
+        return (new Carbon())->toIso8601ZuluString();
     }
 
     /**
@@ -314,18 +307,18 @@ class Utils implements ProjectInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 2018-12-07 11:51
      *
-     * @param string $json_string
-     * @param string $item_output
+     * @param string $json
+     * @param string $output
      *
      * @return string|null
      */
-    public static function jsonItem($json_string = '', $item_output = '')
+    public static function jsonItem(string $json = '', string $output = ''): ?string
     {
-        $result      = json_decode(trim($json_string));
-        $item_output = trim($item_output);
+        $result = json_decode(trim($json));
+        $output = trim($output);
         if ($result !== null) {
-            if (isset($result->$item_output)) {
-                return trim($result->$item_output);
+            if (isset($result->$output)) {
+                return trim($result->$output);
             }
         }
 
@@ -339,28 +332,13 @@ class Utils implements ProjectInterface
      * @time  : 2018-12-07 13:59
      *
      * @param string $str
-     * @param null   $options
+     * @param mixed  $options
      *
      * @return string
      */
-    public static function slugify($str = '', $options = null)
+    public static function slugify(string $str = '', $options = null): string
     {
-        try {
-            if (!empty($options) && is_array($options)) {
-                $slugify = new Slugify($options);
-            } else {
-                $slugify = new Slugify();
-            }
-
-            return $slugify->slugify($str);
-        } catch (Exception $e) {
-            if (function_exists('log_message')) {
-                log_message('error', $e->getMessage());
-                log_message('error', $e->getTraceAsString());
-            }
-
-            return $str;
-        }
+        return (new SlugUrl())->slugify($str, $options);
     }
 
     /**
@@ -373,20 +351,9 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function searchSlugify($str = '')
+    public static function searchSlugify(string $str = ''): string
     {
-        try {
-            $slugify = new Slugify();
-
-            return $slugify->slugify($str, '+');
-        } catch (Exception $e) {
-            if (function_exists('log_message')) {
-                log_message('error', $e->getMessage());
-                log_message('error', $e->getTraceAsString());
-            }
-
-            return trim($str);
-        }
+        return (new SlugUrl())->searchSlugify($str);
     }
 
     /**
@@ -399,20 +366,8 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function strToEn($str = '')
+    public static function strToEn(string $str = ''): string
     {
-        try {
-            $options = array('separator' => ' ');
-            $slugify = new Slugify($options);
-
-            return $slugify->slugify($str);
-        } catch (Exception $e) {
-            if (function_exists('log_message')) {
-                log_message('error', $e->getMessage());
-                log_message('error', $e->getTraceAsString());
-            }
-
-            return trim($str);
-        }
+        return (new SlugUrl())->toEnglish($str);
     }
 }

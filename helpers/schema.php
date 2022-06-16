@@ -18,7 +18,7 @@ if (!function_exists('default_meta_http_equiv')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/25/2020 22:33
      */
-    function default_meta_http_equiv($content_refresh = 3600)
+    function default_meta_http_equiv(int $content_refresh = 3600): array
     {
         return [
             [
