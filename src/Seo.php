@@ -53,7 +53,7 @@ class Seo extends SeoUrl
      * @time  : 2018-12-17 09:54
      *
      */
-    public function viewPagination(array $data = array()): ?string
+    public function viewPagination(array $data = array())
     {
         return $this->common->viewPagination($data);
     }

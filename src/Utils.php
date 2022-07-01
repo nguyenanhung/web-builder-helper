@@ -99,12 +99,12 @@ class Utils implements ProjectInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 11/9/18 17:01
      *
-     * @param array $data
+     * @param mixed $data
      * @param bool  $toLower
      *
      * @return array|bool|\stdClass
      */
-    public static function arrayToObject(array $data = [], bool $toLower = false)
+    public static function arrayToObject($data = array(), bool $toLower = false)
     {
         if (!is_array($data)) {
             return $data;
@@ -312,7 +312,7 @@ class Utils implements ProjectInterface
      *
      * @return string|null
      */
-    public static function jsonItem(string $json = '', string $output = ''): ?string
+    public static function jsonItem(string $json = '', string $output = '')
     {
         $result = json_decode(trim($json));
         $output = trim($output);
