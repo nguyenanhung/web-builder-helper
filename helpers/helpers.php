@@ -59,3 +59,48 @@ if (!function_exists('default_news_article_html_tag')) {
         return $result;
     }
 }
+if (!function_exists('get_headers_url_with_fsockopen')) {
+    function get_headers_url_with_fsockopen($url, $format = 0)
+    {
+        $url = parse_url($url);
+        $end = "\r\n\r\n";
+        $fp  = fsockopen($url['host'], (empty($url['port']) ? 80 : $url['port']), $errno, $errstr, 30);
+        if ($fp) {
+            $out = "GET / HTTP/1.1\r\n";
+            $out .= "Host: " . $url['host'] . "\r\n";
+            $out .= "Connection: Close\r\n\r\n";
+            $var = '';
+            fwrite($fp, $out);
+            while (!feof($fp)) {
+                $var .= fgets($fp, 1280);
+                if (strpos($var, $end))
+                    break;
+            }
+            fclose($fp);
+
+            $var = preg_replace("/\r\n\r\n.*\$/", '', $var);
+            $var = explode("\r\n", $var);
+            if ($format) {
+                foreach ($var as $i) {
+                    if (preg_match('/^([a-zA-Z -]+): +(.*)$/', $i, $parts))
+                        $v[$parts[1]] = $parts[2];
+                }
+
+                return $v;
+            } else
+                return $var;
+        }
+    }
+}
+if (!function_exists('check_url_is_404')) {
+    function check_url_is_404($url)
+    {
+        $check = get_headers_url_with_fsockopen($url, 1);
+        if ($check[0] === 'HTTP/1.1 404 Not Found') {
+            return true;
+        }
+
+        return false;
+    }
+}
+

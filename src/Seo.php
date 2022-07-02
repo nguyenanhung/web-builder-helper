@@ -77,14 +77,21 @@ class Seo extends SeoUrl
             $imageStorageTmpPath = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageStorageTmpPath'];
             $imageDefaultPath    = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageDefaultPath'];
             $defaultImage        = !empty($imageDefaultPath) ? $imageDefaultPath : realpath(__DIR__ . '/../assets/image/no-image-available_x700.jpg');
-            $cache               = new ImageCache();
-            $cache->setTmpPath($imageStorageTmpPath);
-            $cache->setUrlPath($imageUrlTmpPath);
-            $cache->setDefaultImage();
-            $thumbnail = $cache->thumbnail($url, $width, $height);
-            if (!empty($thumbnail)) {
-                return $thumbnail;
+            // Check Image
+            $parseURL = parse_url($url);
+            $isOnline = isset($parseURL['host']);
+            $check404 = $isOnline === true && check_url_is_404($url);
+            if (!$check404) {
+                $cache = new ImageCache();
+                $cache->setTmpPath($imageStorageTmpPath);
+                $cache->setUrlPath($imageUrlTmpPath);
+                $cache->setDefaultImage();
+                $thumbnail = $cache->thumbnail($url, $width, $height);
+                if (!empty($thumbnail)) {
+                    return $thumbnail;
+                }
             }
+
 
             return $cache->thumbnail($defaultImage, $width, $height);
         } catch (Exception $e) {
