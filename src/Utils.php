@@ -86,7 +86,7 @@ class Utils implements ProjectInterface
      *
      * @return bool
      */
-    public static function isJson(string $string = ''): bool
+    public static function isJson(string $string = '')
     {
         json_decode($string);
 
@@ -183,7 +183,7 @@ class Utils implements ProjectInterface
      * @return string
      * @throws \Exception
      */
-    public static function expireTime(int $duration = 1): string
+    public static function expireTime(int $duration = 1)
     {
         $expire = $duration <= 1 ? new DateTime("+0 days") : new DateTime("+$duration days");
 
@@ -200,7 +200,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateHashValue(string $str = ''): string
+    public static function generateHashValue(string $str = '')
     {
         return hash(self::HASH_ALGORITHM, $str);
     }
@@ -213,7 +213,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateUserPasswordRandom(): string
+    public static function generateUserPasswordRandom()
     {
         return random_string(self::USER_PASSWORD_RANDOM_ALGORITHM, self::USER_PASSWORD_RANDOM_LENGTH);
     }
@@ -226,7 +226,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateUserToken(): string
+    public static function generateUserToken()
     {
         return random_string(self::USER_TOKEN_ALGORITHM);
     }
@@ -239,7 +239,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateUserSaltKey(): string
+    public static function generateUserSaltKey()
     {
         return random_string(self::USER_SALT_ALGORITHM);
     }
@@ -252,7 +252,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateRequestId(): string
+    public static function generateRequestId()
     {
         return (new Carbon())->format('YmdHis') . random_string('numeric', 10);
     }
@@ -267,7 +267,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function generateOTPCode(int $length = 6): string
+    public static function generateOTPCode(int $length = 6)
     {
         return random_string('numeric', $length);
     }
@@ -283,7 +283,7 @@ class Utils implements ProjectInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 17/06/2022 24:46
      */
-    public static function generateOTPExpireTime(int $hour = 4): string
+    public static function generateOTPExpireTime(int $hour = 4)
     {
         return (new DateTime('+' . $hour . ' days'))->format('Y-m-d H:i:s');
     }
@@ -296,7 +296,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function zuluTime(): string
+    public static function zuluTime()
     {
         return (new Carbon())->toIso8601ZuluString();
     }
@@ -336,7 +336,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function slugify(string $str = '', $options = null): string
+    public static function slugify(string $str = '', $options = null)
     {
         return (new SlugUrl())->slugify($str, $options);
     }
@@ -351,7 +351,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function searchSlugify(string $str = ''): string
+    public static function searchSlugify(string $str = '')
     {
         return (new SlugUrl())->searchSlugify($str);
     }
@@ -366,7 +366,7 @@ class Utils implements ProjectInterface
      *
      * @return string
      */
-    public static function strToEn(string $str = ''): string
+    public static function strToEn(string $str = '')
     {
         return (new SlugUrl())->toEnglish($str);
     }

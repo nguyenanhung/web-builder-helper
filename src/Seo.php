@@ -61,16 +61,16 @@ class Seo extends SeoUrl
     /**
      * Function resizeImage
      *
-     * @param string $url
-     * @param int    $width
-     * @param int    $height
+     * @param string|mixed $url
+     * @param int          $width
+     * @param int          $height
      *
-     * @return string
+     * @return string|mixed
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/25/2020 01:44
      */
-    public function resizeImage(string $url = '', int $width = 100, int $height = 100): string
+    public function resizeImage($url = '', int $width = 100, int $height = 100)
     {
         try {
             $imageUrlTmpPath     = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageUrlTmpPath'];
@@ -111,7 +111,7 @@ class Seo extends SeoUrl
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 16/06/2022 30:25
      */
-    public function searchSlugify(string $str = ''): string
+    public function searchSlugify(string $str = '')
     {
         return $this->search_slugify($str);
     }
