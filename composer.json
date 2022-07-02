@@ -42,9 +42,7 @@
             "nguyenanhung\\WebBuilderHelper\\": "src/"
         },
         "files": [
-            "helpers/helpers.php",
-            "helpers/schema.php",
-            "helpers/html_helper.php"
+            "helpers/helpers.php"
 
         ]
     }

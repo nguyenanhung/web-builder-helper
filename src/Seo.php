@@ -59,7 +59,7 @@ class Seo extends SeoUrl
     }
 
     /**
-     * Function resizeImage
+     * Function resizeImage - Cache Image to Tmp Folder
      *
      * @param string|mixed $url
      * @param int          $width
@@ -76,12 +76,8 @@ class Seo extends SeoUrl
             $imageUrlTmpPath     = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageUrlTmpPath'];
             $imageStorageTmpPath = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageStorageTmpPath'];
             $imageDefaultPath    = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageDefaultPath'];
-            if (!empty($imageDefaultPath)) {
-                $defaultImage = $imageDefaultPath;
-            } else {
-                $defaultImage = realpath(__DIR__ . '/../../assets/image/system/no-image-available_640.jpg');
-            }
-            $cache = new ImageCache();
+            $defaultImage        = !empty($imageDefaultPath) ? $imageDefaultPath : realpath(__DIR__ . '/../assets/image/no-image-available_x700.jpg');
+            $cache               = new ImageCache();
             $cache->setTmpPath($imageStorageTmpPath);
             $cache->setUrlPath($imageUrlTmpPath);
             $cache->setDefaultImage();
@@ -99,20 +95,5 @@ class Seo extends SeoUrl
 
             return $url;
         }
-    }
-
-    /**
-     * Function searchSlugify
-     *
-     * @param string $str
-     *
-     * @return string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 16/06/2022 30:25
-     */
-    public function searchSlugify(string $str = '')
-    {
-        return $this->search_slugify($str);
     }
 }
