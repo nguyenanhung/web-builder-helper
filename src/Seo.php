@@ -11,9 +11,10 @@
 namespace nguyenanhung\WebBuilderHelper;
 
 use Exception;
+use nguyenanhung\MyCache\Cache;
+use nguyenanhung\SEO\SeoUrl;
 use nguyenanhung\Classes\Helper\Common;
 use nguyenanhung\MyImage\ImageCache;
-use nguyenanhung\SEO\SeoUrl;
 
 /**
  * Class Seo
@@ -29,7 +30,6 @@ class Seo extends SeoUrl
     /** @var Common $common */
     protected $common;
 
-
     /**
      * Seo constructor.
      *
@@ -41,7 +41,6 @@ class Seo extends SeoUrl
         parent::__construct();
         $this->common = new Common();
     }
-
 
     /**
      * Function viewPagination
@@ -73,24 +72,39 @@ class Seo extends SeoUrl
     public function resizeImage($url = '', int $width = 100, int $height = 100)
     {
         try {
-            $imageUrlTmpPath     = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageUrlTmpPath'];
-            $imageStorageTmpPath = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageStorageTmpPath'];
-            $imageDefaultPath    = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageDefaultPath'];
-            $defaultImage        = !empty($imageDefaultPath) ? $imageDefaultPath : realpath(__DIR__ . '/../assets/image/no-image-available_x700.jpg');
-            // Check Image
-            // $parseURL = parse_url($url);
-            // $isOnline = isset($parseURL['host']);
-            // $check404 = $isOnline === true && check_url_is_404($url);
-            $cache = new ImageCache();
-            $cache->setTmpPath($imageStorageTmpPath);
-            $cache->setUrlPath($imageUrlTmpPath);
-            $cache->setDefaultImage();
-            $thumbnail = $cache->thumbnail($url, $width, $height);
-            if (!empty($thumbnail)) {
-                return $thumbnail;
+            $cacheKey  = md5($url . $width . $height);
+            $cachePath = $this->sdkConfig['OPTIONS']['cachePath'];
+            $cacheTtl  = $this->sdkConfig['OPTIONS']['cacheTtl'];
+            $cache     = new Cache();
+            $cache->setCachePath($cachePath)->setCacheTtl($cacheTtl)->setCacheDriver('files')->setCacheDefaultChmod('0777')
+                  ->setCacheSecurityKey('Web-Builder-Helper-SEO-Resize-Image');
+            $cache->__construct();
+            if ($cache->has($cacheKey)) {
+                $result = $cache->get($cacheKey);
+            } else {
+                $imageUrlTmpPath     = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageUrlTmpPath'];
+                $imageStorageTmpPath = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageStorageTmpPath'];
+                $imageDefaultPath    = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageDefaultPath'];
+                $defaultImage        = !empty($imageDefaultPath) ? $imageDefaultPath : realpath(__DIR__ . '/../assets/image/no-image-available_x700.jpg');
+                $imageCache          = new ImageCache();
+                $imageCache->setTmpPath($imageStorageTmpPath);
+                $imageCache->setUrlPath($imageUrlTmpPath);
+                $imageCache->setDefaultImage();
+                $thumbnail = $imageCache->thumbnail($url, $width, $height);
+                if (!empty($thumbnail)) {
+                    $result = $thumbnail;
+                } else {
+                    $defaultThumbnail = $imageCache->thumbnail($defaultImage, $width, $height);
+                    if (!empty($defaultThumbnail)) {
+                        $result = $defaultThumbnail;
+                    } else {
+                        $result = $url;
+                    }
+                }
+                $cache->save($cacheKey, $result);
             }
 
-            return $cache->thumbnail($defaultImage, $width, $height);
+            return $result;
         } catch (Exception $e) {
             if (function_exists('log_message')) {
                 log_message('error', $e->getMessage());

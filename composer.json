@@ -29,6 +29,7 @@
         "nesbot/carbon": "^2 || ^1"
     },
     "require-dev": {
+        "nguyenanhung/my-cache": "^3.0 || ^2.0 || ^1.0",
         "nguyenanhung/seo": "^3.0 || ^2.0 || ^1.0",
         "nguyenanhung/image": "^3.0 || ^2.0 || ^1.0",
         "nguyenanhung/helpers": "^3.0 || ^2.0 || ^1.0"
