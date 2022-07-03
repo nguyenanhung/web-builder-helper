@@ -72,12 +72,12 @@ class Seo extends SeoUrl
     public function resizeImage($url = '', int $width = 100, int $height = 100)
     {
         try {
+            $cacheSecret = md5('Web-Builder-Helper-SEO-Resize-Image');
             $cacheKey  = md5($url . $width . $height);
+            $cacheTtl  = 15552000; // Cache 6 tháng
             $cachePath = $this->sdkConfig['OPTIONS']['cachePath'];
-            $cacheTtl  = $this->sdkConfig['OPTIONS']['cacheTtl'];
             $cache     = new Cache();
-            $cache->setCachePath($cachePath)->setCacheTtl($cacheTtl)->setCacheDriver('files')->setCacheDefaultChmod('0777')
-                  ->setCacheSecurityKey('Web-Builder-Helper-SEO-Resize-Image');
+            $cache->setCachePath($cachePath)->setCacheTtl($cacheTtl)->setCacheDriver('files')->setCacheDefaultChmod('0777')->setCacheSecurityKey($cacheSecret);
             $cache->__construct();
             if ($cache->has($cacheKey)) {
                 $result = $cache->get($cacheKey);
