@@ -10,6 +10,8 @@
 
 namespace nguyenanhung\WebBuilderHelper;
 
+use nguyenanhung\Libraries\Filtered\Filter as FilteredFilter;
+
 /**
  * Class Filter
  *
@@ -17,40 +19,9 @@ namespace nguyenanhung\WebBuilderHelper;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class Filter implements ProjectInterface
+class Filter extends FilteredFilter implements ProjectInterface
 {
     use Version;
-
-    /**
-     * Function filterInputDataIsArray
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/26/18 09:45
-     *
-     * @param mixed $inputData
-     * @param mixed $requireData
-     *
-     * @return bool
-     */
-    public static function filterInputDataIsArray($inputData = [], $requireData = []): bool
-    {
-        if (empty($inputData) || empty($requireData)) {
-            return false;
-        }
-        if (count($requireData) <= 0 || count($inputData) <= 0) {
-            return false;
-        }
-        if (!is_array($requireData) || !is_array($inputData)) {
-            return false;
-        }
-        foreach ($requireData as $params) {
-            if (!array_key_exists($params, $inputData)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 
     /**
      * Function exceptionMissingInputParams

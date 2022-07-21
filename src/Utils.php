@@ -50,14 +50,15 @@ class Utils implements ProjectInterface
      */
     public static function redirect(string $uri = '', string $method = 'auto', int $code = null)
     {
+        if (!preg_match('#^(\w+:)?//#i', $uri) && function_exists('site_url')) {
+            $uri = site_url($uri);
+        }
+
         // IIS environment likely? Use 'refresh' for better compatibility
-        if ($method === 'auto' &&
-            isset($_SERVER['SERVER_SOFTWARE']) &&
-            strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== false) {
+        if ($method === 'auto' && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== false) {
             $method = 'refresh';
         } elseif ($method !== 'refresh' && (empty($code) or !is_numeric($code))) {
-            if (isset($_SERVER['SERVER_PROTOCOL'], $_SERVER['REQUEST_METHOD']) &&
-                $_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1') {
+            if (isset($_SERVER['SERVER_PROTOCOL'], $_SERVER['REQUEST_METHOD']) && $_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1') {
                 $code = ($_SERVER['REQUEST_METHOD'] !== 'GET')
                     ? 303    // reference: http://en.wikipedia.org/wiki/Post/Redirect/Get
                     : 307;
@@ -65,6 +66,7 @@ class Utils implements ProjectInterface
                 $code = 302;
             }
         }
+
         switch ($method) {
             case 'refresh':
                 header('Refresh:0;url=' . $uri);
