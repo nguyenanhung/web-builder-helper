@@ -26,6 +26,7 @@
         "nguyenanhung/filtered-helper": "^2.0 || ^1.0",
         "nguyenanhung/hashids-helper": "^2.0 || ^1.0",
         "nguyenanhung/slug-helper": "^2.0 || ^1.0",
+        "nguyenanhung/tracking-tag-helper": "^2.0 || ^1.0",
         "nguyenanhung/markdown": "^2.0 || ^1.0",
         "nesbot/carbon": "^2 || ^1"
     },
