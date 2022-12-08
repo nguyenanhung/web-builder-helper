@@ -92,7 +92,7 @@ class Utils implements ProjectInterface
     {
         json_decode($string);
 
-        return (json_last_error() == JSON_ERROR_NONE);
+        return (json_last_error() === JSON_ERROR_NONE);
     }
 
     /**
@@ -318,10 +318,8 @@ class Utils implements ProjectInterface
     {
         $result = json_decode(trim($json));
         $output = trim($output);
-        if ($result !== null) {
-            if (isset($result->$output)) {
-                return trim($result->$output);
-            }
+        if (($result !== null) && isset($result->$output)) {
+            return trim($result->$output);
         }
 
         return null;

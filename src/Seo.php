@@ -73,20 +73,29 @@ class Seo extends SeoUrl
     {
         try {
             $cacheSecret = md5('Web-Builder-Helper-SEO-Resize-Image');
-            $cacheKey  = md5($url . $width . $height);
-            $cacheTtl  = 15552000; // Cache 6 tháng
-            $cachePath = $this->sdkConfig['OPTIONS']['cachePath'];
-            $cache     = new Cache();
-            $cache->setCachePath($cachePath)->setCacheTtl($cacheTtl)->setCacheDriver('files')->setCacheDefaultChmod('0777')->setCacheSecurityKey($cacheSecret);
+            $cacheKey    = md5($url . $width . $height);
+            $cacheTtl    = 15552000; // Cache 6 tháng
+            $cachePath   = $this->sdkConfig['OPTIONS']['cachePath'];
+            $cache       = new Cache();
+            $cache->setCachePath($cachePath)
+                  ->setCacheTtl($cacheTtl)
+                  ->setCacheDriver('files')
+                  ->setCacheDefaultChmod('0777')
+                  ->setCacheSecurityKey($cacheSecret);
             $cache->__construct();
+
             if ($cache->has($cacheKey)) {
                 $result = $cache->get($cacheKey);
             } else {
                 $imageUrlTmpPath     = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageUrlTmpPath'];
                 $imageStorageTmpPath = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageStorageTmpPath'];
                 $imageDefaultPath    = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageDefaultPath'];
-                $defaultImage        = !empty($imageDefaultPath) ? $imageDefaultPath : realpath(__DIR__ . '/../assets/image/no-image-available_x700.jpg');
-                $imageCache          = new ImageCache();
+                if (!empty($imageDefaultPath)) {
+                    $defaultImage = $imageDefaultPath;
+                } else {
+                    $defaultImage = __DIR__ . '/../assets/image/no-image-available_x700.jpg';
+                }
+                $imageCache = new ImageCache();
                 $imageCache->setTmpPath($imageStorageTmpPath);
                 $imageCache->setUrlPath($imageUrlTmpPath);
                 $imageCache->setDefaultImage();

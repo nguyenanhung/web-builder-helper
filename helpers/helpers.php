@@ -73,8 +73,9 @@ if (!function_exists('get_headers_url_with_fsockopen')) {
             fwrite($fp, $out);
             while (!feof($fp)) {
                 $var .= fgets($fp, 1280);
-                if (strpos($var, $end))
+                if (strpos($var, $end)) {
                     break;
+                }
             }
             fclose($fp);
 
@@ -82,13 +83,15 @@ if (!function_exists('get_headers_url_with_fsockopen')) {
             $var = explode("\r\n", $var);
             if ($format) {
                 foreach ($var as $i) {
-                    if (preg_match('/^([a-zA-Z -]+): +(.*)$/', $i, $parts))
+                    if (preg_match('/^([a-zA-Z -]+): +(.*)$/', $i, $parts)) {
                         $v[$parts[1]] = $parts[2];
+                    }
                 }
 
                 return $v;
-            } else
-                return $var;
+            }
+
+            return $var;
         }
     }
 }
@@ -96,11 +99,8 @@ if (!function_exists('check_url_is_404')) {
     function check_url_is_404($url)
     {
         $check = get_headers_url_with_fsockopen($url, 1);
-        if (is_array($check) && isset($check[0]) && $check[0] === 'HTTP/1.1 404 Not Found') {
-            return true;
-        }
 
-        return false;
+        return is_array($check) && isset($check[0]) && $check[0] === 'HTTP/1.1 404 Not Found';
     }
 }
 
