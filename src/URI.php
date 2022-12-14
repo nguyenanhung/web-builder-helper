@@ -165,9 +165,9 @@ class URI
 
         // parse_url() returns false if no host is present, but the path or query string
         // contains a colon followed by a number
-        $uri   = parse_url('http://dummy' . $_SERVER['REQUEST_URI']);
+        $uri = parse_url('http://dummy' . $_SERVER['REQUEST_URI']);
         $query = $uri['query'] ?? '';
-        $uri   = $uri['path'] ?? '';
+        $uri = $uri['path'] ?? '';
 
         if (isset($_SERVER['SCRIPT_NAME'][0])) {
             if (strpos($uri, $_SERVER['SCRIPT_NAME']) === 0) {
@@ -180,8 +180,8 @@ class URI
         // This section ensures that even on servers that require the URI to be in the query string (Nginx) a correct
         // URI is found, and also fixes the QUERY_STRING server var and $_GET array.
         if (trim($uri, '/') === '' && strncmp($query, '/', 1) === 0) {
-            $query                   = explode('?', $query, 2);
-            $uri                     = $query[0];
+            $query = explode('?', $query, 2);
+            $uri = $query[0];
             $_SERVER['QUERY_STRING'] = $query[1] ?? '';
         } else {
             $_SERVER['QUERY_STRING'] = $query;
@@ -213,9 +213,9 @@ class URI
         if (trim($uri, '/') === '') {
             return '';
         } elseif (strncmp($uri, '/', 1) === 0) {
-            $uri                     = explode('?', $uri, 2);
+            $uri = explode('?', $uri, 2);
             $_SERVER['QUERY_STRING'] = $uri[1] ?? '';
-            $uri                     = $uri[0];
+            $uri = $uri[0];
         }
 
         parse_str($_SERVER['QUERY_STRING'], $_GET);
@@ -253,7 +253,7 @@ class URI
     protected function _remove_relative_directory($uri)
     {
         $uris = array();
-        $tok  = strtok($uri, '/');
+        $tok = strtok($uri, '/');
         while ($tok !== false) {
             if ((!empty($tok) or $tok === '0') && $tok !== '..') {
                 $uris[] = $tok;
@@ -398,7 +398,7 @@ class URI
         }
 
         $total_segments = "total_{$which}s";
-        $segment_array  = "{$which}_array";
+        $segment_array = "{$which}_array";
 
         if ($this->$total_segments() < $n) {
             return (count($default) === 0)
@@ -407,15 +407,15 @@ class URI
         }
 
         $segments = array_slice($this->$segment_array(), ($n - 1));
-        $i        = 0;
-        $lastval  = '';
-        $retval   = array();
+        $i = 0;
+        $lastval = '';
+        $retval = array();
         foreach ($segments as $seg) {
             if ($i % 2) {
                 $retval[$lastval] = $seg;
             } else {
                 $retval[$seg] = null;
-                $lastval      = $seg;
+                $lastval = $seg;
             }
 
             $i++;

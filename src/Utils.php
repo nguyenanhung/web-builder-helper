@@ -26,11 +26,11 @@ class Utils implements ProjectInterface
 {
     use Version;
 
-    public const HASH_ALGORITHM                 = 'md5';
-    public const USER_PASSWORD_RANDOM_LENGTH    = 6;
+    public const HASH_ALGORITHM = 'md5';
+    public const USER_PASSWORD_RANDOM_LENGTH = 6;
     public const USER_PASSWORD_RANDOM_ALGORITHM = 'numeric';
-    public const USER_TOKEN_ALGORITHM           = 'md5';
-    public const USER_SALT_ALGORITHM            = 'md5';
+    public const USER_TOKEN_ALGORITHM = 'md5';
+    public const USER_SALT_ALGORITHM = 'md5';
 
     /**
      * Header Redirect

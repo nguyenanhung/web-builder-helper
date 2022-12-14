@@ -21,5 +21,4 @@ use nguyenanhung\Libraries\UUID\UUID as UUIDPackage;
  */
 class UUID extends UUIDPackage
 {
-
 }

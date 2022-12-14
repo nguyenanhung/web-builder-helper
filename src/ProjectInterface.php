@@ -17,13 +17,13 @@ namespace nguyenanhung\WebBuilderHelper;
  */
 interface ProjectInterface
 {
-    public const VERSION       = '1.0.8';
-    public const LAST_MODIFIED = '2022-12-08';
-    public const AUTHOR_NAME   = 'Hung Nguyen';
-    public const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
-    public const PROJECT_NAME  = 'Helper: Web Builder by Hung Nguyen';
+    public const VERSION = '1.0.8.1';
+    public const LAST_MODIFIED = '2022-12-14';
+    public const AUTHOR_NAME = 'Hung Nguyen';
+    public const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
+    public const PROJECT_NAME = 'Helper: Web Builder by Hung Nguyen';
     public const USE_BENCHMARK = false;
-    public const USE_DEBUG     = false;
+    public const USE_DEBUG = false;
 
     /**
      * Hàm lấy thông tin phiên bản Package

@@ -47,16 +47,16 @@ if (!function_exists('default_meta_http_equiv')) {
 if (!function_exists('default_news_article_html_tag')) {
     function default_news_article_html_tag($firstSegment = ''): string
     {
-        $result = '';
-        if (empty($firstSegment) || $firstSegment == '') {
-            $result .= "<html lang=\"vi\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:og=\"https://ogp.me/ns#\" xmlns:fb=\"https://www.facebook.com/2008/fbml\">\n";
-            $result .= "<head prefix=\"og: https://ogp.me/ns#\">\n";
+        $html = '';
+        if (empty($firstSegment)) {
+            $html .= "<html lang=\"vi\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:og=\"https://ogp.me/ns#\" xmlns:fb=\"https://www.facebook.com/2008/fbml\">\n";
+            $html .= "<head prefix=\"og: https://ogp.me/ns#\">\n";
         } else {
-            $result .= "<html lang=\"vi\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:og=\"https://ogp.me/ns#\" xmlns:fb=\"https://www.facebook.com/2008/fbml\" itemscope=\"itemscope\" itemtype=\"https://schema.org/NewsArticle\">\n";
-            $result .= "<head prefix=\"og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#\">\n";
+            $html .= "<html lang=\"vi\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:og=\"https://ogp.me/ns#\" xmlns:fb=\"https://www.facebook.com/2008/fbml\" itemscope=\"itemscope\" itemtype=\"https://schema.org/NewsArticle\">\n";
+            $html .= "<head prefix=\"og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#\">\n";
         }
 
-        return $result;
+        return $html;
     }
 }
 if (!function_exists('get_headers_url_with_fsockopen')) {
@@ -96,7 +96,7 @@ if (!function_exists('get_headers_url_with_fsockopen')) {
     }
 }
 if (!function_exists('check_url_is_404')) {
-    function check_url_is_404($url)
+    function check_url_is_404($url): bool
     {
         $check = get_headers_url_with_fsockopen($url, 1);
 

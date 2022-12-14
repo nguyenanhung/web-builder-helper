@@ -73,10 +73,10 @@ class Seo extends SeoUrl
     {
         try {
             $cacheSecret = md5('Web-Builder-Helper-SEO-Resize-Image');
-            $cacheKey    = md5($url . $width . $height);
-            $cacheTtl    = 15552000; // Cache 6 tháng
-            $cachePath   = $this->sdkConfig['OPTIONS']['cachePath'];
-            $cache       = new Cache();
+            $cacheKey = md5($url . $width . $height);
+            $cacheTtl = 15552000; // Cache 6 tháng
+            $cachePath = $this->sdkConfig['OPTIONS']['cachePath'];
+            $cache = new Cache();
             $cache->setCachePath($cachePath)
                   ->setCacheTtl($cacheTtl)
                   ->setCacheDriver('files')
@@ -87,9 +87,9 @@ class Seo extends SeoUrl
             if ($cache->has($cacheKey)) {
                 $result = $cache->get($cacheKey);
             } else {
-                $imageUrlTmpPath     = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageUrlTmpPath'];
+                $imageUrlTmpPath = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageUrlTmpPath'];
                 $imageStorageTmpPath = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageStorageTmpPath'];
-                $imageDefaultPath    = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageDefaultPath'];
+                $imageDefaultPath = $this->sdkConfig[self::HANDLE_CONFIG_KEY]['imageDefaultPath'];
                 if (!empty($imageDefaultPath)) {
                     $defaultImage = $imageDefaultPath;
                 } else {
