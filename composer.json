@@ -18,7 +18,7 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.0",
         "ext-pdo": "*",
         "ext-curl": "*",
         "ext-json": "*",
@@ -37,8 +37,10 @@
         "nguyenanhung/helpers": "^3.0 || ^2.0 || ^1.0"
     },
     "suggest": {
-        "nguyenanhung/image": "For Image Cache",
-        "nguyenanhung/helpers": "For Awesome helpers"
+        "nguyenanhung/image": "Image Cache & Image processing",
+        "nguyenanhung/seo": "SEO Support",
+        "nguyenanhung/my-cache": "Cache Support",
+        "nguyenanhung/helpers": "For Awesome Helpers and Library"
     },
     "autoload": {
         "psr-4": {
