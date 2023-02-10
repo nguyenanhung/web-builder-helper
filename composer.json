@@ -28,7 +28,7 @@
         "nguyenanhung/slug-helper": ">=1.0",
         "nguyenanhung/tracking-tag-helper": ">=1.0",
         "nguyenanhung/markdown": ">=1.0",
-        "nesbot/carbon": "^2 || ^1"
+        "nesbot/carbon": ">=1.0"
     },
     "require-dev": {
         "nguyenanhung/my-cache": ">=1.0",
