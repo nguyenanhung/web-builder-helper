@@ -48,9 +48,9 @@ class Seo extends SeoUrl
      * @param array $data
      *
      * @return string|null
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2018-12-17 09:54
-     *
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 10/02/2023 35:39
      */
     public function viewPagination(array $data = array())
     {
@@ -72,6 +72,7 @@ class Seo extends SeoUrl
     public function resizeImage($url = '', int $width = 100, int $height = 100)
     {
         try {
+            // Cache Setup
             $cacheSecret = md5('Web-Builder-Helper-SEO-Resize-Image');
             $cacheKey = md5($url . $width . $height);
             $cacheTtl = 15552000; // Cache 6 tháng

@@ -20,28 +20,28 @@ if (!function_exists('default_meta_http_equiv')) {
      */
     function default_meta_http_equiv(int $content_refresh = 3600): array
     {
-        return [
-            [
+        return array(
+            array(
                 'name'    => 'X-UA-Compatible',
                 'content' => 'IE=edge',
                 'type'    => 'http-equiv'
-            ],
-            [
+            ),
+            array(
                 'name'    => 'refresh',
                 'content' => $content_refresh,
                 'type'    => 'equiv'
-            ],
-            [
+            ),
+            array(
                 'name'    => 'content-language',
                 'content' => 'vi',
                 'type'    => 'equiv'
-            ],
-            [
+            ),
+            array(
                 'name'    => 'audience',
                 'content' => 'general',
                 'type'    => 'equiv'
-            ]
-        ];
+            )
+        );
     }
 }
 if (!function_exists('default_news_article_html_tag')) {
@@ -64,7 +64,7 @@ if (!function_exists('get_headers_url_with_fsockopen')) {
     {
         $url = parse_url($url);
         $end = "\r\n\r\n";
-        $fp  = fsockopen($url['host'], (empty($url['port']) ? 80 : $url['port']), $errno, $errstr, 30);
+        $fp = fsockopen($url['host'], (empty($url['port']) ? 80 : $url['port']), $errno, $errstr, 30);
         if ($fp) {
             $out = "GET / HTTP/1.1\r\n";
             $out .= "Host: " . $url['host'] . "\r\n";
