@@ -18,7 +18,7 @@ if (!function_exists('default_meta_http_equiv')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/25/2020 22:33
      */
-    function default_meta_http_equiv(int $content_refresh = 3600): array
+    function default_meta_http_equiv($content_refresh = 3600)
     {
         return array(
             array(
@@ -45,7 +45,7 @@ if (!function_exists('default_meta_http_equiv')) {
     }
 }
 if (!function_exists('default_news_article_html_tag')) {
-    function default_news_article_html_tag($firstSegment = ''): string
+    function default_news_article_html_tag($firstSegment = '')
     {
         $html = '';
         if (empty($firstSegment)) {
@@ -96,11 +96,10 @@ if (!function_exists('get_headers_url_with_fsockopen')) {
     }
 }
 if (!function_exists('check_url_is_404')) {
-    function check_url_is_404($url): bool
+    function check_url_is_404($url)
     {
         $check = get_headers_url_with_fsockopen($url, 1);
 
         return is_array($check) && isset($check[0]) && $check[0] === 'HTTP/1.1 404 Not Found';
     }
 }
-

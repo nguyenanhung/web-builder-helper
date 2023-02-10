@@ -18,23 +18,23 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
+        "php": ">=5.6",
         "ext-pdo": "*",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "nguyenanhung/filtered-helper": "^2.0 || ^1.0",
-        "nguyenanhung/hashids-helper": "^2.0 || ^1.0",
-        "nguyenanhung/slug-helper": "^2.0 || ^1.0",
-        "nguyenanhung/tracking-tag-helper": "^2.0 || ^1.0",
-        "nguyenanhung/markdown": "^2.0 || ^1.0",
+        "nguyenanhung/filtered-helper": ">=1.0",
+        "nguyenanhung/hashids-helper": ">=1.0",
+        "nguyenanhung/slug-helper": ">=1.0",
+        "nguyenanhung/tracking-tag-helper": ">=1.0",
+        "nguyenanhung/markdown": ">=1.0",
         "nesbot/carbon": "^2 || ^1"
     },
     "require-dev": {
-        "nguyenanhung/my-cache": "^3.0 || ^2.0 || ^1.0",
-        "nguyenanhung/seo": "^3.0 || ^2.0 || ^1.0",
-        "nguyenanhung/image": "^3.0 || ^2.0 || ^1.0",
-        "nguyenanhung/helpers": "^3.0 || ^2.0 || ^1.0"
+        "nguyenanhung/my-cache": ">=1.0",
+        "nguyenanhung/seo": ">=1.0",
+        "nguyenanhung/image": ">=1.0",
+        "nguyenanhung/helpers": ">=1.0"
     },
     "suggest": {
         "nguyenanhung/image": "Image Cache & Image processing",

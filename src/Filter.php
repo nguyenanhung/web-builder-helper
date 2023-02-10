@@ -31,7 +31,7 @@ class Filter extends FilteredFilter implements ProjectInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/09/2021 49:46
      */
-    public static function exceptionMissingInputParams(): string
+    public static function exceptionMissingInputParams()
     {
         $url = 'https://go.tramtro.com/esdmv96z';
         $errorMsg = 'Invalid or Missing Require Params Page Meta';

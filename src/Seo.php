@@ -69,7 +69,7 @@ class Seo extends SeoUrl
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/25/2020 01:44
      */
-    public function resizeImage($url = '', int $width = 100, int $height = 100)
+    public function resizeImage($url = '', $width = 100, $height = 100)
     {
         try {
             // Cache Setup

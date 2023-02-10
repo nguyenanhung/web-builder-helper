@@ -34,7 +34,7 @@ class Utils extends HelperUtils
      *
      * @return string|null
      */
-    public static function jsonItem(string $json = '', string $output = '')
+    public static function jsonItem($json = '', $output = '')
     {
         return (new HelperCommon())->jsonItem($json, $output);
     }
@@ -50,7 +50,7 @@ class Utils extends HelperUtils
      *
      * @return string
      */
-    public static function slugify(string $str = '', $options = null): string
+    public static function slugify($str = '', $options = null)
     {
         return (new SlugUrl())->slugify($str, $options);
     }
@@ -65,7 +65,7 @@ class Utils extends HelperUtils
      *
      * @return string
      */
-    public static function searchSlugify(string $str = ''): string
+    public static function searchSlugify($str = '')
     {
         return (new SlugUrl())->searchSlugify($str);
     }
@@ -80,7 +80,7 @@ class Utils extends HelperUtils
      *
      * @return string
      */
-    public static function strToEn(string $str = ''): string
+    public static function strToEn($str = '')
     {
         return (new SlugUrl())->toEnglish($str);
     }
