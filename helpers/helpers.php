@@ -119,7 +119,7 @@ if (!function_exists('_sdk_highlight_search_keyword_')) {
                 return $str;
             }
             $keyword = $pagination['highlight_text_keyword'];
-            $highlight = highlight_search_keyword($str, $keyword);
+            $highlight = highlight_search_keyword($keyword, $str);
 
             return trim($highlight);
         }

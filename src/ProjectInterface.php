@@ -17,7 +17,7 @@ namespace nguyenanhung\WebBuilderHelper;
  */
 interface ProjectInterface
 {
-    const VERSION = '1.1.1';
+    const VERSION = '1.1.2';
     const LAST_MODIFIED = '2023-02-17';
     const AUTHOR_NAME = 'Hung Nguyen';
     const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
