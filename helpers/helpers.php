@@ -104,7 +104,7 @@ if (!function_exists('check_url_is_404')) {
     }
 }
 if (!function_exists('_sdk_highlight_search_keyword_')) {
-    function _sdk_highlight_search_keyword_($pagination, $str)
+    function _sdk_highlight_search_keyword_($pagination, $str, $font_color = null)
     {
         $str = trim($str);
         if (!isset($pagination['page_content_type'])) {
@@ -115,11 +115,11 @@ if (!function_exists('_sdk_highlight_search_keyword_')) {
         }
         if (isset($pagination['highlight_keyword_status'], $pagination['highlight_text_keyword'])) {
             $status = $pagination['highlight_keyword_status'];
-            if ($status !== true) {
+            $keyword = $pagination['highlight_text_keyword'];
+            if ($status !== true || empty($keyword)) {
                 return $str;
             }
-            $keyword = $pagination['highlight_text_keyword'];
-            $highlight = highlight_search_keyword($keyword, $str);
+            $highlight = highlight_search_keyword($keyword, $str, $font_color);
 
             return trim($highlight);
         }
