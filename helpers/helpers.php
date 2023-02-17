@@ -103,4 +103,28 @@ if (!function_exists('check_url_is_404')) {
         return is_array($check) && isset($check[0]) && $check[0] === 'HTTP/1.1 404 Not Found';
     }
 }
+if (!function_exists('_sdk_highlight_search_keyword_')) {
+    function _sdk_highlight_search_keyword_($pagination, $str): string
+    {
+        $str = trim($str);
+        if (!isset($pagination['page_content_type'])) {
+            return $str;
+        }
+        if ($pagination['page_content_type'] !== 'search') {
+            return $str;
+        }
+        if (isset($pagination['highlight_keyword_status'], $pagination['highlight_text_keyword'])) {
+            $status = $pagination['highlight_keyword_status'];
+            if ($status !== true) {
+                return $str;
+            }
+            $keyword = $pagination['highlight_text_keyword'];
+            $highlight = highlight_search_keyword($str, $keyword);
+
+            return trim($highlight);
+        }
+
+        return $str;
+    }
+}
 
