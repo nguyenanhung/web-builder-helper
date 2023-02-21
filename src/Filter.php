@@ -19,10 +19,8 @@ use nguyenanhung\Libraries\Filtered\Filter as FilteredFilter;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class Filter extends FilteredFilter implements ProjectInterface
+class Filter extends FilteredFilter
 {
-    use Version;
-
     /**
      * Function exceptionMissingInputParams
      *
