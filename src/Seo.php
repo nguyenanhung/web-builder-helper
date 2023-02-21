@@ -25,8 +25,6 @@ use nguyenanhung\MyImage\ImageCache;
  */
 class Seo extends SeoUrl
 {
-    use Version;
-
     /** @var Common $common */
     protected $common;
 
@@ -94,7 +92,7 @@ class Seo extends SeoUrl
                 if (!empty($imageDefaultPath)) {
                     $defaultImage = $imageDefaultPath;
                 } else {
-                    $defaultImage = __DIR__ . '/../assets/image/no-image-available_x700.jpg';
+                    $defaultImage = smart_bear_wbsa_default_image_system_700();
                 }
                 $imageCache = new ImageCache();
                 $imageCache->setTmpPath($imageStorageTmpPath);
