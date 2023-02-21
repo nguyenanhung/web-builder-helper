@@ -1,24 +1,26 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Project web-builder-helper
+ * Created by PhpStorm
  * User: 713uk13m <dev@nguyenanhung.com>
- * Date: 10/4/18
- * Time: 14:55
+ * Copyright: 713uk13m <dev@nguyenanhung.com>
+ * Date: 21/02/2023
+ * Time: 09:54
  */
 
 namespace nguyenanhung\WebBuilderHelper;
 
 /**
- * Interface ProjectInterface
+ * Class BaseHelper
  *
  * @package   nguyenanhung\WebBuilderHelper
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-interface ProjectInterface
+class BaseHelper
 {
-    const VERSION = '2.0.3';
-    const LAST_MODIFIED = '2023-02-17';
+    const VERSION = '2.0.4';
+    const LAST_MODIFIED = '2023-02-21';
     const AUTHOR_NAME = 'Hung Nguyen';
     const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
     const PROJECT_NAME = 'Helper: Web Builder by Hung Nguyen';
@@ -26,12 +28,15 @@ interface ProjectInterface
     const USE_DEBUG = false;
 
     /**
-     * Hàm lấy thông tin phiên bản Package
+     * Function getVersion
      *
-     * @author  : 713uk13m <dev@nguyenanhung.com>
-     * @time    : 10/13/18 15:12
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 2018-12-31 01:39
      *
-     * @return string Current Project Version, VD: 0.1.0
+     * @return string
      */
-    public function getVersion(): string;
+    public function getVersion(): string
+    {
+        return self::VERSION;
+    }
 }

@@ -28,6 +28,7 @@
         "nguyenanhung/slug-helper": "^2.0 || ^1.0",
         "nguyenanhung/tracking-tag-helper": "^2.0 || ^1.0",
         "nguyenanhung/markdown": "^2.0 || ^1.0",
+        "nguyenanhung/web-builder-assets": "^1.0",
         "nesbot/carbon": "^2 || ^1"
     },
     "require-dev": {
