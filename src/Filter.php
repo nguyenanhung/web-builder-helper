@@ -10,8 +10,6 @@
 
 namespace nguyenanhung\WebBuilderHelper;
 
-use nguyenanhung\Libraries\Filtered\Filter as FilteredFilter;
-
 /**
  * Class Filter
  *
@@ -19,7 +17,7 @@ use nguyenanhung\Libraries\Filtered\Filter as FilteredFilter;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class Filter extends FilteredFilter
+class Filter extends \nguyenanhung\Libraries\Filtered\Filter
 {
     /**
      * Function exceptionMissingInputParams

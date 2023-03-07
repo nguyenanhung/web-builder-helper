@@ -10,19 +10,13 @@
 
 namespace nguyenanhung\WebBuilderHelper;
 
-use nguyenanhung\Libraries\URI\CodeIgniter3_URI;
-
 /**
- * URI Class
+ * Class URI
  *
- * Parses URIs and determines routing
- *
- * @package        CodeIgniter
- * @subpackage     Libraries
- * @category       URI
- * @author         EllisLab Dev Team
- * @link           https://codeigniter.com/userguide3/libraries/uri.html
+ * @package   nguyenanhung\WebBuilderHelper
+ * @author    713uk13m <dev@nguyenanhung.com>
+ * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class URI extends CodeIgniter3_URI
+class URI extends \nguyenanhung\Libraries\URI\CodeIgniter3_URI
 {
 }
