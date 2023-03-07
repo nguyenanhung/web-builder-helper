@@ -10,8 +10,6 @@
 
 namespace nguyenanhung\WebBuilderHelper;
 
-use nguyenanhung\Classes\Helper\Table as BaseTable;
-
 /**
  * HTML Table Generating Class
  *
@@ -23,7 +21,7 @@ use nguyenanhung\Classes\Helper\Table as BaseTable;
  * @author         EllisLab Dev Team
  * @link           https://codeigniter.com/user_guide/libraries/table.html
  */
-class Table extends BaseTable
+class Table extends \nguyenanhung\Classes\Helper\Table
 {
 }
 

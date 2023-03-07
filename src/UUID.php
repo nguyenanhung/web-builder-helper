@@ -10,8 +10,6 @@
 
 namespace nguyenanhung\WebBuilderHelper;
 
-use nguyenanhung\Libraries\UUID\UUID as UUIDPackage;
-
 /**
  * Class UUID
  *
@@ -19,6 +17,6 @@ use nguyenanhung\Libraries\UUID\UUID as UUIDPackage;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class UUID extends UUIDPackage
+class UUID extends \nguyenanhung\Libraries\UUID\UUID
 {
 }
