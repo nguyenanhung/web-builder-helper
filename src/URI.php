@@ -10,8 +10,6 @@
 
 namespace nguyenanhung\WebBuilderHelper;
 
-use nguyenanhung\Libraries\URI\CodeIgniter3_URI;
-
 /**
  * URI Class
  *
@@ -23,6 +21,6 @@ use nguyenanhung\Libraries\URI\CodeIgniter3_URI;
  * @author         EllisLab Dev Team
  * @link           https://codeigniter.com/userguide3/libraries/uri.html
  */
-class URI extends CodeIgniter3_URI
+class URI extends \nguyenanhung\Libraries\URI\CodeIgniter3_URI
 {
 }

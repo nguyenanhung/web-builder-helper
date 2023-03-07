@@ -11,16 +11,16 @@
 namespace nguyenanhung\WebBuilderHelper;
 
 /**
- * Class BaseHelper
+ * Class Helper
  *
  * @package   nguyenanhung\WebBuilderHelper
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class BaseHelper
+class Helper
 {
-    const VERSION = '1.1.4';
-    const LAST_MODIFIED = '2023-02-21';
+    const VERSION = '1.1.5';
+    const LAST_MODIFIED = '2023-03-07';
     const AUTHOR_NAME = 'Hung Nguyen';
     const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
     const PROJECT_NAME = 'Helper: Web Builder by Hung Nguyen';
