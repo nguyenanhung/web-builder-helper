@@ -1,4 +1,9 @@
-[![Latest Stable Version](http://poser.pugx.org/nguyenanhung/web-builder-helper/v)](https://packagist.org/packages/nguyenanhung/web-builder-helper) [![Total Downloads](http://poser.pugx.org/nguyenanhung/web-builder-helper/downloads)](https://packagist.org/packages/nguyenanhung/web-builder-helper) [![Latest Unstable Version](http://poser.pugx.org/nguyenanhung/web-builder-helper/v/unstable)](https://packagist.org/packages/nguyenanhung/web-builder-helper) [![License](http://poser.pugx.org/nguyenanhung/web-builder-helper/license)](https://packagist.org/packages/nguyenanhung/web-builder-helper) [![PHP Version Require](http://poser.pugx.org/nguyenanhung/web-builder-helper/require/php)](https://packagist.org/packages/nguyenanhung/web-builder-helper)
+[![Latest Stable Version](https://img.shields.io/packagist/v/nguyenanhung/web-builder-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/web-builder-helper)
+[![Total Downloads](https://img.shields.io/packagist/dt/nguyenanhung/web-builder-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/web-builder-helper)
+[![Daily Downloads](https://img.shields.io/packagist/dd/nguyenanhung/web-builder-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/web-builder-helper)
+[![Monthly Downloads](https://img.shields.io/packagist/dm/nguyenanhung/web-builder-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/web-builder-helper)
+[![License](https://img.shields.io/packagist/l/nguyenanhung/web-builder-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/web-builder-helper)
+[![PHP Version Require](https://img.shields.io/packagist/dependency-v/nguyenanhung/web-builder-helper/php)](https://packagist.org/packages/nguyenanhung/web-builder-helper)
 
 # Web Builder Helper by Hung Nguyen
 
