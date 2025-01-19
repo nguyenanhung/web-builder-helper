@@ -45,7 +45,8 @@
     },
     "autoload": {
         "psr-4": {
-            "nguyenanhung\\WebBuilderHelper\\": "src/"
+            "nguyenanhung\\Platforms\\WebBuilderSDK\\WebBuilderHelper\\": "src/",
+            "nguyenanhung\\WebBuilderHelper\\": "old/"
         },
         "files": [
             "helpers/helpers.php"
