@@ -1,18 +1,8 @@
 <?php
-/**
- * Project web-builder-helper
- * Created by PhpStorm
- * User: 713uk13m <dev@nguyenanhung.com>
- * Copyright: 713uk13m <dev@nguyenanhung.com>
- * Date: 09/09/2021
- * Time: 22:48
- */
 
-namespace nguyenanhung\WebBuilderHelper;
+namespace nguyenanhung\Platforms\WebBuilderSDK\WebBuilderHelper;
 
 use nguyenanhung\Libraries\Slug\SlugUrl;
-use nguyenanhung\Classes\Helper\Utils as HelperUtils;
-use nguyenanhung\Classes\Helper\Common as HelperCommon;
 
 /**
  * Class Utils
@@ -21,7 +11,7 @@ use nguyenanhung\Classes\Helper\Common as HelperCommon;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class Utils extends HelperUtils
+class Utils extends \nguyenanhung\Classes\Helper\Utils
 {
     /**
      * Function jsonItem
@@ -34,9 +24,9 @@ class Utils extends HelperUtils
      *
      * @return string|null
      */
-    public static function jsonItem(string $json = '', string $output = '')
+    public static function jsonItem($json = '', $output = '')
     {
-        return (new HelperCommon())->jsonItem($json, $output);
+        return (new Common())->jsonItem($json, $output);
     }
 
     /**
@@ -50,7 +40,7 @@ class Utils extends HelperUtils
      *
      * @return string
      */
-    public static function slugify(string $str = '', $options = null): string
+    public static function slugify($str = '', $options = null)
     {
         return (new SlugUrl())->slugify($str, $options);
     }
@@ -65,7 +55,7 @@ class Utils extends HelperUtils
      *
      * @return string
      */
-    public static function searchSlugify(string $str = ''): string
+    public static function searchSlugify($str = '')
     {
         return (new SlugUrl())->searchSlugify($str);
     }
@@ -80,7 +70,7 @@ class Utils extends HelperUtils
      *
      * @return string
      */
-    public static function strToEn(string $str = ''): string
+    public static function strToEn($str = '')
     {
         return (new SlugUrl())->toEnglish($str);
     }

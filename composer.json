@@ -29,7 +29,7 @@
         "nguyenanhung/tracking-tag-helper": ">=1.0",
         "nguyenanhung/markdown": ">=1.0",
         "nguyenanhung/web-builder-assets": ">=1.0",
-        "nesbot/carbon": ">=1.0",
+        "nesbot/carbon": ">=1.0"
     },
     "require-dev": {
         "nguyenanhung/my-cache": ">=1.0",
@@ -45,7 +45,8 @@
     },
     "autoload": {
         "psr-4": {
-            "nguyenanhung\\WebBuilderHelper\\": "src/"
+            "nguyenanhung\\Platforms\\WebBuilderSDK\\WebBuilderHelper\\": "src/",
+            "nguyenanhung\\WebBuilderHelper\\": "old/"
         },
         "files": [
             "helpers/helpers.php"

@@ -1,14 +1,6 @@
 <?php
-/**
- * Project web-builder-helper
- * Created by PhpStorm
- * User: 713uk13m <dev@nguyenanhung.com>
- * Copyright: 713uk13m <dev@nguyenanhung.com>
- * Date: 09/09/2021
- * Time: 22:51
- */
 
-namespace nguyenanhung\WebBuilderHelper;
+namespace nguyenanhung\Platforms\WebBuilderSDK\WebBuilderHelper;
 
 /**
  * HTML Table Generating Class
@@ -24,4 +16,3 @@ namespace nguyenanhung\WebBuilderHelper;
 class Table extends \nguyenanhung\Classes\Helper\Table
 {
 }
-
